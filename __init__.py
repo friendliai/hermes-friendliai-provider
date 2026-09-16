@@ -52,7 +52,7 @@ request crash. It must be returned in the ``extra_body`` slot.
     "<level>" -> top-level reasoning_effort = "<level>" (verbatim on that wire)
 
 The "on" side still uses ``chat_template_kwargs.enable_thinking`` (the same
-toggle :mod:`plugins.model_providers.zai` and ``dsh-llm-friendli``'s
+toggle :mod:`plugins.model_providers.zai` and ``@friendliai/dsh-llm-friendli``'s
 ``resolveReasoning()`` in ``src/serialize.ts`` use) because turning reasoning
 *on* was not observed to have the leakage problem above — only the *off*
 path was. Only ``reasoning_effort`` disable spellings (never a hardcoded
@@ -287,7 +287,7 @@ def _fetch_catalog_items(
     except Exception as exc:
         logger.debug("friendli: catalog fetch failed: %s", exc)
         return None
-    items = data if isinstance(data, list) else data.get("data", [])
+    items = data if isinstance(data, list) else (data.get("data", []) if isinstance(data, dict) else [])
     return items if isinstance(items, list) else None
 
 
