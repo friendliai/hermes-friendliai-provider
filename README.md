@@ -19,7 +19,6 @@ Then add your API key to `~/.hermes/.env`:
 FRIENDLIAI_API_KEY=your_key_here
 ```
 
-
 Pick the provider with `hermes model` (FriendliAI → `zai-org/GLM-5.3` etc.)
 or set it in `config.yaml`:
 
